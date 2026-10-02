@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MoneyManager : MonoBehaviour
 {
@@ -22,7 +23,15 @@ public class MoneyManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        playerMoney = PlayerPrefs.GetFloat("money");
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            PlayerPrefs.SetFloat("money", 0);
+            playerMoney = 0;
+        }
+        else
+        {
+            playerMoney = PlayerPrefs.GetFloat("money");
+        }
         timeRemaining = maxTime;
         timeSlider.maxValue = maxTime;
     }

@@ -16,6 +16,10 @@ public class GameManager : MonoBehaviour
     public bool theEnd = false;
     public bool theThirdLevel = false;
 
+    public int currentLevel = 1;
+
+    public GameObject[] Waves;
+
     public Text currentLevelText;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -76,13 +80,13 @@ public class GameManager : MonoBehaviour
     {
         /*if (!isBoss)
         {*/
-            levelCompleteScreen.SetActive(true);
-            secondCam.SetActive(true);
-            gameCompleted = true;
-            if (!gameCompleted)
-            {
-                Destroy(FindAnyObjectByType<playerMovement>().gameObject);
-            }
+        levelCompleteScreen.SetActive(true);
+        secondCam.SetActive(true);
+        gameCompleted = true;
+        if (!gameCompleted)
+        {
+            Destroy(FindAnyObjectByType<playerMovement>().gameObject);
+        }
         GetComponent<MoneyManager>().timerRunning = false;
         PlayerPrefs.SetFloat("money", GetComponent<MoneyManager>().playerMoney);
         Cursor.lockState = CursorLockMode.None;
@@ -103,36 +107,21 @@ public class GameManager : MonoBehaviour
 
     public void Restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene("Level - 1");
     }
     
-    public void NextLvl(int level)
+    public void NextLvl()
     {
-        if (PlayerPrefs.GetInt("level") > 0)
         {
-            int levelCompleted = PlayerPrefs.GetInt("level");
-            PlayerPrefs.SetInt("level", level);
-            Debug.Log("Level Completed and levels completed are " + levelCompleted);
-        }
-        else if(PlayerPrefs.GetInt("level") <= 0)
-        {
-            PlayerPrefs.SetInt("level", level);
-        }
-        if (theThirdLevel)
-        {
-            SceneManager.LoadScene("level 4");
-        }
-        else
-        {
-            SceneManager.LoadScene("LevelManager");
+            SceneManager.LoadScene("Level - " + (SceneManager.GetActiveScene().buildIndex+1));
         }
     }
 
     public void MainMenu()
     {
-        if (isBoss)
+        if (SceneManager.GetActiveScene().buildIndex == 3)
         {
-            PlayerPrefs.SetInt("level", 4);
+            PlayerPrefs.SetInt("YO", 1);
             SceneManager.LoadScene("Menu");
         }
         else

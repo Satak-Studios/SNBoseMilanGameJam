@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class MenuManager : MonoBehaviour
 {
     public Text versionTxt;
+    public GameObject gameCompleted;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -16,35 +17,19 @@ public class MenuManager : MonoBehaviour
     void Update()
     {
         versionTxt.text = "v"+Application.version;
+        if (PlayerPrefs.GetInt("YO") == 1)
+        {
+            gameCompleted.SetActive(true);
+        }
+        else
+        {
+            gameCompleted.SetActive(false);
+        }
     }
 
     public void StartGame()
     {
-        if (PlayerPrefs.HasKey("level"))
-        {
-            Debug.Log("You are an old player");
-            SceneManager.LoadScene("LevelManager");
-        }
-        else
-        {
-            SceneManager.LoadScene("tutorial");
-            Debug.Log("You are a new player");
-        }
-    }
-
-    public void Tutorial()
-    {
-        SceneManager.LoadScene("tutorial");
-    }
-
-   /* public void Options()
-    {
-        //Temporary
-    }*/
-
-    public void ResetProgress()
-    {
-        PlayerPrefs.DeleteKey("level");
+        SceneManager.LoadScene("Level - 1");
     }
 
     public void Quit()

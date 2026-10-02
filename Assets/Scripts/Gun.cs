@@ -9,6 +9,7 @@ public class Gun : MonoBehaviour
 
     public Camera fpsCamera;
     public ParticleSystem ps;
+    public int attackSpeedPercentage=1;
 
     // Update is called once per frame
     void Start()
@@ -27,16 +28,21 @@ public class Gun : MonoBehaviour
         RaycastHit hit;
         if(Physics.Raycast(fpsCamera.transform.position,fpsCamera.transform.forward,out hit))
         {
-            Boss _boss = hit.transform.GetComponent<Boss>();
-            MiniBoss _mBoss = hit.transform.GetComponent<MiniBoss>();
+            //Boss _boss = hit.transform.GetComponent<Boss>();
+            //MiniBoss _mBoss = hit.transform.GetComponent<MiniBoss>();
             Enemy enemy = hit.transform.GetComponent<Enemy>();
             Barrel barrel = hit.transform.GetComponent<Barrel>();
+            
             if(enemy != null)
             {
-                enemy.TakeDamage(damage);
+                //enemy.TakeDamage(damage);
+                for (int i = 0; i < attackSpeedPercentage; i++)
+                {
+                    GiveDamage(enemy);
+                }
             }
             
-            if(_boss != null)
+            /*if(_boss != null)
             {
                 _boss.TakeDamage(damage);
             }
@@ -44,13 +50,28 @@ public class Gun : MonoBehaviour
             if (_mBoss != null)
             {
                 _mBoss.TakeDamage(damage);
-            }
+            }*/
 
             if (barrel != null)
             {
-                barrel.TakeDamage(barrelDamage);
+                //InvokeRepeating("BarrelDamage")
+                for (int i = 0; i < attackSpeedPercentage; i++)
+                {
+                    BarrelDamage(barrel);
+                }
+                //barrel.TakeDamage(barrelDamage);
                 //Debug.Log("Barrel taking damage!");
             }
         }
+    }
+
+    void GiveDamage(Enemy enemy)
+    {
+        enemy.TakeDamage(damage);
+    }
+
+    void BarrelDamage(Barrel _barrel)
+    {
+        _barrel.TakeDamage(barrelDamage);
     }
 }

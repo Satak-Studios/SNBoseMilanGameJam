@@ -24,6 +24,7 @@ public class StoreManager : MonoBehaviour
         if (_playerMoney >= _cost)
         {
             GetComponent<MoneyManager>().playerMoney -= CalcCost(i);
+            PlayerPrefs.SetFloat("money", GetComponent<MoneyManager>().playerMoney);
             AddEffect(i);
             Debug.Log("The current selected item is " + i.ToString() + " and the cost is " + CalcCost(i).ToString());
         }
@@ -38,21 +39,21 @@ public class StoreManager : MonoBehaviour
         switch (i)
         {
             case 0:
-                return 100;
+                return 250;
             case 1:
-                return 100;
+                return 600;
             case 2:
-                return 100;
+                return 400;
             case 3:
-                return 100;
+                return 1500;
             case 4:
-                return 100;
+                return 400;
             case 5:
-                return 100;
+                return 800;
             case 6:
-                return 100;
+                return 400;
             case 7:
-                return 100;
+                return 600;
             default:
                 return 0;
         }
@@ -70,8 +71,10 @@ public class StoreManager : MonoBehaviour
                 FindAnyObjectByType<PlayerHealth>().Heal(60);
                 break;
             case 2:
+                FindAnyObjectByType<Gun>().attackSpeedPercentage = 2;
                 break;
             case 3:
+                FindAnyObjectByType<Gun>().attackSpeedPercentage = 4;
                 break;
             case 4:
                 FindAnyObjectByType<Enemy>().defensePercentage=10;
@@ -83,7 +86,7 @@ public class StoreManager : MonoBehaviour
                 FindAnyObjectByType<Enemy>().attackPercentage=20;
                 break;
             case 7:
-                FindAnyObjectByType<Enemy>().attackPercentage=40;
+                FindAnyObjectByType<Enemy>().attackPercentage=50;
                 break;
             default:
                 break;
