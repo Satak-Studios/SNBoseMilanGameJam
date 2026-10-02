@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
@@ -42,8 +42,13 @@ public class MoneyManager : MonoBehaviour
         if (timerRunning && !(timeRemaining < 0))
         {
             timeRemaining -= (Time.deltaTime);
-            timeRemainingText.text = timeRemaining.ToString("00");
+            timeRemainingText.text = "⏱"+timeRemaining.ToString("00");
             timeSlider.value = timeRemaining;
+        }
+        else
+        {
+            timerRunning = false;
+            GetComponent<GameManager>().GameOver();
         }
 
         moneyText.text = "Money : $" + Mathf.FloorToInt(playerMoney).ToString();

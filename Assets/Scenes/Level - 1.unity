@@ -3409,7 +3409,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MoneyManage
   playerMoney: 0
-  maxTime: 90
+  maxTime: 60
   timeRemaining: 0
   baseReward: 125
   rewardFactor: 500
@@ -3533,6 +3533,10 @@ PrefabInstance:
     - target: {fileID: 690518004344666509, guid: 3f306fbb97ca1ca4b8240656b990e1fe, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1687721706642318321, guid: 3f306fbb97ca1ca4b8240656b990e1fe, type: 3}
+      propertyPath: isTutu
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2251020005860851542, guid: 3f306fbb97ca1ca4b8240656b990e1fe, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size

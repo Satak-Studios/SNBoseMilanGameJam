@@ -69,7 +69,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::playerMovement
   controller: {fileID: 8399996776481218719}
-  speed: 20
+  speed: 10
   jump_speed: 11
   gravity: -10
   ground_distance: 0.5
@@ -10591,6 +10591,7 @@ MonoBehaviour:
   gun_sound: {fileID: 8300000, guid: b3302999b5eead445a12aa8afb79462c, type: 3}
   fpsCamera: {fileID: 6375715063584373052}
   ps: {fileID: 7250413650716897865}
+  attackSpeedPercentage: 1
 --- !u!4 &3379580521942475489 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2cf10fa706c7a4d42b5927d8e730f4e2, type: 3}
@@ -10693,6 +10694,7 @@ MonoBehaviour:
   gun_sound: {fileID: 8300000, guid: b3302999b5eead445a12aa8afb79462c, type: 3}
   fpsCamera: {fileID: 6375715063584373052}
   ps: {fileID: 211590145834853640}
+  attackSpeedPercentage: 1
 --- !u!4 &4268250981340509738 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2cf10fa706c7a4d42b5927d8e730f4e2, type: 3}
@@ -10808,6 +10810,7 @@ MonoBehaviour:
   gun_sound: {fileID: 8300000, guid: 7e086c8e2cd6b3b4d9c4aa4018347aaa, type: 3}
   fpsCamera: {fileID: 6375715063584373052}
   ps: {fileID: 7250413650716897865}
+  attackSpeedPercentage: 1
 --- !u!4 &4102775167908407733 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 17113fc8e13a5374ea71bb2fb284b84c, type: 3}
